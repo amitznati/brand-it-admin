@@ -20,7 +20,7 @@
         "@material-ui/icons": "^4.9.1",
         "@material-ui/lab": "^4.0.0-alpha.56",
         "apollo-upload-client": "^14.1.2",
-        "graphql": "^15.3.0",
+        "graphql": "^15.4.0",
         "proxy-polyfill": "^0.3.0",
         "ra-data-graphql-simple": "^3.0.0",
         "ra-i18n-polyglot": "^3.0.0",
