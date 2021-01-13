@@ -83,10 +83,11 @@ const customBuildQuery = (
 };
 
 export default () => {
+    const uri = process.env.NODE_ENV === 'development' ? 'http://localhost:4000/graphql/' : '/graphql/';
     return buildApolloClient({
         clientOptions: {
             cache: new InMemoryCache(),
-            link: createUploadLink({uri: 'http://13.58.212.226:4000/graphql'})
+            link: createUploadLink({ uri })
         },
         buildQuery: customBuildQuery,
     }).then(
