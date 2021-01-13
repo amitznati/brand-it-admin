@@ -1,1 +1,5 @@
-export const initialTemplate = JSON.stringify({ templateGradients: [], templateFilters: [], layouts: [] });
+export const initialTemplate = JSON.stringify({
+    templateGradients: [],
+    templateFilters: [],
+    layouts: []
+});

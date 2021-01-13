@@ -1,10 +1,10 @@
-import React from 'react';
-import { useListContext } from 'react-admin';
+import React from "react";
+import {useListContext} from "react-admin";
 import {Grid} from "@material-ui/core";
 import ProductCard from "./ProductCard";
 
 const LoadedGridList = () => {
-    const { ids, data } = useListContext();
+    const {ids, data} = useListContext();
 
     if (!ids || !data) return null;
 
@@ -16,20 +16,15 @@ const LoadedGridList = () => {
                     <Grid item xs={12} sm={12} md={6} lg={3} key={id}>
                         <ProductCard product={product} />
                     </Grid>
-                )
+                );
             })}
         </Grid>
     );
 };
 
-
 const GridList = () => {
-    const { loaded } = useListContext();
-    return loaded ? (
-        <LoadedGridList/>
-    ) : (
-        <div>Loading...</div>
-    );
+    const {loaded} = useListContext();
+    return loaded ? <LoadedGridList /> : <div>Loading...</div>;
 };
 
 export default GridList;

@@ -1,9 +1,8 @@
 import * as React from "react";
-import { useListContext } from 'react-admin';
+import {useListContext} from "react-admin";
 import FontProvider from "../commonComponents/FontProvider";
 import {Grid, TextField} from "@material-ui/core";
 import DeleteButtonWithConfirmation from "../commonComponents/DeleteButtonWithConfirmation";
-
 
 const FontList = () => {
     const [texts, setTexts] = React.useState({});
@@ -12,7 +11,7 @@ const FontList = () => {
     if (!data) {
         return <div>Loading...</div>;
     }
-    const fontFamilies: Array<{fontFamily: string, src: string}> = ids.map((id) => ({
+    const fontFamilies: Array<{fontFamily: string; src: string}> = ids.map((id) => ({
         src: `url(${data[id] && data[id].url}) format("woff2")`,
         fontFamily: data[id] && data[id].name
     }));
@@ -23,11 +22,11 @@ const FontList = () => {
                     const font = data[id];
                     if (!font || !font.name) return <div key={id} />;
                     return (
-                        <Grid key={id} item xs={12} >
+                        <Grid key={id} item xs={12}>
                             <div>
-                                <span style={{fontFamily: font.name, fontSize: '4rem'}}>
-                                {font.name}
-                            </span>
+                                <span style={{fontFamily: font.name, fontSize: "4rem"}}>
+                                    {font.name}
+                                </span>
                             </div>
                             <div>
                                 <TextField
@@ -37,12 +36,17 @@ const FontList = () => {
                                 />
                             </div>
                             <div>
-                                <span style={{fontFamily: font.name, fontSize: '2rem'}}>
-                                {texts[id]}
-                            </span>
+                                <span style={{fontFamily: font.name, fontSize: "2rem"}}>
+                                    {texts[id]}
+                                </span>
                             </div>
                             <div>
-                                <DeleteButtonWithConfirmation resource='Font' basePath='/Font' redirect='list' record={font}/>
+                                <DeleteButtonWithConfirmation
+                                    resource="Font"
+                                    basePath="/Font"
+                                    redirect="list"
+                                    record={font}
+                                />
                             </div>
                         </Grid>
                     );
@@ -50,5 +54,5 @@ const FontList = () => {
             </Grid>
         </FontProvider>
     );
-}
+};
 export default FontList;

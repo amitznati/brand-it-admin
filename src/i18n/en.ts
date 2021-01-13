@@ -1,89 +1,74 @@
-import { TranslationMessages } from 'ra-core';
-import englishMessages from 'ra-language-english';
+import {TranslationMessages} from "ra-core";
+import englishMessages from "ra-language-english";
 
 const customEnglishMessages: TranslationMessages = {
     ...englishMessages,
-    Categories: 'Categories',
-    Assets: 'Assets',
-    Simulator: 'Simulator',
-    'Template Saved': 'Template Saved',
-    'Template Deleted': 'Template Deleted',
-    'Element Deleted': 'Element Deleted',
+    Categories: "Categories",
+    Assets: "Assets",
+    Simulator: "Simulator",
+    "Template Saved": "Template Saved",
+    "Template Deleted": "Template Deleted",
+    "Element Deleted": "Element Deleted",
     pos: {
-        search: 'Search',
-        configuration: 'Configuration',
-        language: 'Language',
+        search: "Search",
+        configuration: "Configuration",
+        language: "Language",
         theme: {
-            name: 'Theme',
-            light: 'Light',
-            dark: 'Dark',
+            name: "Theme",
+            light: "Light",
+            dark: "Dark"
         },
         menu: {
-            catalog: 'Catalog',
-        },
+            catalog: "Catalog"
+        }
     },
     resources: {
         business: {
-            name: 'Business |||| Businesses',
+            name: "Business |||| Businesses",
             fields: {
-                name: 'Name',
+                name: "Name"
             },
-            filters: {
-
-            },
-            fieldGroups: {
-
-            },
+            filters: {},
+            fieldGroups: {},
             page: {
-                delete: 'Delete Business',
+                delete: "Delete Business"
             },
-            errors: {
-            },
+            errors: {}
         },
         category: {
-            name: 'Category |||| Categories',
+            name: "Category |||| Categories",
             fields: {
-                name: 'Name',
-                products: 'Products'
+                name: "Name",
+                products: "Products"
             },
-            filters: {
-
-            },
-            fieldGroups: {
-
-            },
+            filters: {},
+            fieldGroups: {},
             page: {
-                delete: 'Delete category',
+                delete: "Delete category"
             },
-            errors: {
-            },
+            errors: {}
         },
         product: {
-            name: 'Product |||| Products',
-            filters: {
-
-            },
-            fieldGroups: {
-
-            },
+            name: "Product |||| Products",
+            filters: {},
+            fieldGroups: {},
             page: {
-                delete: 'Delete product',
+                delete: "Delete product"
             },
-            errors: {
-            },
+            errors: {}
         },
         Product: {
             fields: {
-                name: 'Name',
-                categories: 'Categories',
-                image: 'Image',
+                name: "Name",
+                categories: "Categories",
+                image: "Image",
                 size: {
-                    width: 'Width',
-                    height: 'Height'
+                    width: "Width",
+                    height: "Height"
                 }
-            },
+            }
         }
-    },
+    }
 };
 
 export default customEnglishMessages;

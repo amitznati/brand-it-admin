@@ -1,31 +1,38 @@
 import * as React from "react";
-import {useQuery, Loading, Error, useNotify, useMutation} from 'react-admin';
+import {useQuery, Loading, Error, useNotify, useMutation} from "react-admin";
 import {Grid, Button, CardActions, Card, CardContent, CardActionArea} from "@material-ui/core";
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import EditIcon from '@material-ui/icons/Edit';
-import {TemplatePreviewForPreview} from 'template-editor';
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import EditIcon from "@material-ui/icons/Edit";
+import {TemplatePreviewForPreview} from "template-editor";
 
 const DeleteTemplateButton = (props) => {
-    const {product, template: {id}, refresh} = props;
+    const {
+        product,
+        template: {id},
+        refresh
+    } = props;
     const notify = useNotify();
-    const [approve] = useMutation({
-        type: 'deleteTemplate',
-        resource: 'Product',
-        payload: { id, productId: product.id}
-    }, {
-        onSuccess: () => {
-            notify('Template Deleted', 'info', {}, true);
-            refresh();
+    const [approve] = useMutation(
+        {
+            type: "deleteTemplate",
+            resource: "Product",
+            payload: {id, productId: product.id}
+        },
+        {
+            onSuccess: () => {
+                notify("Template Deleted", "info", {}, true);
+                refresh();
+            }
         }
-    });
+    );
     return (
-        <Button onClick={approve} style={{ color: 'red' }} size="small">
+        <Button onClick={approve} style={{color: "red"}} size="small">
             <DeleteForeverIcon />
         </Button>
     );
 };
 
-const TemplatesGrid = props => {
+const TemplatesGrid = (props) => {
     const {product, selectedTheme, onEditTemplate, refresh} = props;
     const {templates} = product;
     if (!templates || !templates.length) {
@@ -34,7 +41,7 @@ const TemplatesGrid = props => {
     const onEdit = (template) => {
         onEditTemplate(template);
         window.scrollTo(0, 0);
-    }
+    };
     return (
         <Grid container spacing={2}>
             {templates.map((template) => {
@@ -52,9 +59,13 @@ const TemplatesGrid = props => {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                <Button size="small" color="primary" onClick={() => {
-                                    onEdit(template);
-                                }}>
+                                <Button
+                                    size="small"
+                                    color="primary"
+                                    onClick={() => {
+                                        onEdit(template);
+                                    }}
+                                >
                                     <EditIcon />
                                 </Button>
                                 <DeleteTemplateButton {...{product, template, refresh}} />
@@ -64,32 +75,34 @@ const TemplatesGrid = props => {
                 );
             })}
         </Grid>
-    )
-}
-
+    );
+};
 
 const ProductTemplatesPreview = (props) => {
-    const { record, selectedTheme, onEditTemplate, refresh } = props;
+    const {record, selectedTheme, onEditTemplate, refresh} = props;
     const [product, setProduct] = React.useState();
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
-    useQuery({
-        type: 'getProductsWithTemplates',
-        resource: 'Product',
-        payload: {ids: [record.id]}
-    }, {
-        onSuccess: ({data}) => {
-            setProduct(data[0]);
-            setLoading(false);
-            setError(null);
+    useQuery(
+        {
+            type: "getProductsWithTemplates",
+            resource: "Product",
+            payload: {ids: [record.id]}
         },
-        onFailure: (err) => {
-            setError(err);
-            setLoading(false);
+        {
+            onSuccess: ({data}) => {
+                setProduct(data[0]);
+                setLoading(false);
+                setError(null);
+            },
+            onFailure: (err) => {
+                setError(err);
+                setLoading(false);
+            }
         }
-    });
+    );
     if (loading) {
-        return <Loading/>;
+        return <Loading />;
     }
     if (error) {
         return <Error error={error} />;

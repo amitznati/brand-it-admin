@@ -1,2 +1,2 @@
-export { default as defaultTheme } from './defaultTheme';
-export { default as defaultLogo } from './defaultLogo';
+export {default as defaultTheme} from "./defaultTheme";
+export {default as defaultLogo} from "./defaultLogo";

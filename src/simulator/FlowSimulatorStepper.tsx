@@ -1,10 +1,10 @@
-import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import {makeStyles, Theme, createStyles} from "@material-ui/core/styles";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 import SelectCategory from "./SelectCategory";
 import SelectBrand from "./SelectBrand";
 import LogoSelect from "./LogoSelect";
@@ -12,46 +12,52 @@ import LogoSelect from "./LogoSelect";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            width: '100%'
+            width: "100%"
         },
         button: {
-            marginRight: theme.spacing(1),
+            marginRight: theme.spacing(1)
         },
         instructions: {
             marginTop: theme.spacing(1),
-            marginBottom: theme.spacing(1),
+            marginBottom: theme.spacing(1)
         },
         stepContentWrap: {
-            minHeight: '30rem',
+            minHeight: "30rem"
         },
         stepContent: {
             // position: 'absolute',
             // top: '50%',
             // left: '50%',
             // transform: 'translate(-50%, -50%)'
-        },
-    }),
+        }
+    })
 );
 
 export default function FlowSimulatorStepper() {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set<number>());
-    const steps = ['Select Category', 'Select Logo', 'Choose your brand'];
-    const [selectedCategory, setSelectedCategory] = React.useState('');
+    const steps = ["Select Category", "Select Logo", "Choose your brand"];
+    const [selectedCategory, setSelectedCategory] = React.useState("");
     const [selectedLogo, setSelectedLogo] = React.useState();
-
 
     const getStepContent = (step: number) => {
         switch (step) {
             case 0:
-                return <SelectCategory onSelectCategory={setSelectedCategory} selectedCategory={selectedCategory}/>;
+                return (
+                    <SelectCategory
+                        onSelectCategory={setSelectedCategory}
+                        selectedCategory={selectedCategory}
+                    />
+                );
             case 1:
-                return <LogoSelect onSelect={setSelectedLogo} selectedLogo={selectedLogo} /> ;
+                return <LogoSelect onSelect={setSelectedLogo} selectedLogo={selectedLogo} />;
             case 2:
-                return <SelectBrand selectedCategory={selectedCategory} selectedLogo={selectedLogo} />;
+                return (
+                    <SelectBrand selectedCategory={selectedCategory} selectedLogo={selectedLogo} />
+                );
             default:
-                return 'Unknown step';
+                return "Unknown step";
         }
     };
 
@@ -101,8 +107,8 @@ export default function FlowSimulatorStepper() {
         <div className={classes.root}>
             <Stepper activeStep={activeStep}>
                 {steps.map((label, index) => {
-                    const stepProps: { completed?: boolean } = {};
-                    const labelProps: { optional?: React.ReactNode } = {};
+                    const stepProps: {completed?: boolean} = {};
+                    const labelProps: {optional?: React.ReactNode} = {};
                     if (isStepOptional(index)) {
                         labelProps.optional = <Typography variant="caption">Optional</Typography>;
                     }
@@ -129,12 +135,14 @@ export default function FlowSimulatorStepper() {
                 ) : (
                     <div>
                         <div className={classes.stepContentWrap}>
-                            <div className={classes.stepContent}>
-                                {getStepContent(activeStep)}
-                            </div>
+                            <div className={classes.stepContent}>{getStepContent(activeStep)}</div>
                         </div>
                         <div>
-                            <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
+                            <Button
+                                disabled={activeStep === 0}
+                                onClick={handleBack}
+                                className={classes.button}
+                            >
                                 Back
                             </Button>
                             {isStepOptional(activeStep) && (
@@ -154,7 +162,7 @@ export default function FlowSimulatorStepper() {
                                 onClick={handleNext}
                                 className={classes.button}
                             >
-                                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                                {activeStep === steps.length - 1 ? "Finish" : "Next"}
                             </Button>
                         </div>
                     </div>

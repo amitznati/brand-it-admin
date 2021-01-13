@@ -1,10 +1,10 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import {makeStyles} from "@material-ui/core/styles";
 import {SaveButton, Toolbar} from "react-admin";
 import DeleteButtonWithConfirmation from "./DeleteButtonWithConfirmation";
 
 const useStyles = makeStyles({
-    toolBar: {display: 'flex', justifyContent: 'space-between'}
+    toolBar: {display: "flex", justifyContent: "space-between"}
 });
 
 const CustomFormToolbar = (props) => {
@@ -14,7 +14,7 @@ const CustomFormToolbar = (props) => {
     return (
         <Toolbar {...props} className={classes.toolBar}>
             <SaveButton disabled={invalid} {...rest} />
-            {isEdit && <DeleteButtonWithConfirmation/>}
+            {isEdit && <DeleteButtonWithConfirmation />}
         </Toolbar>
     );
 };

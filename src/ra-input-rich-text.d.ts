@@ -1,1 +1,1 @@
-declare module 'ra-input-rich-text';
+declare module "ra-input-rich-text";

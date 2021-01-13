@@ -1,20 +1,20 @@
-import { ReactChildren } from 'react';
+import {ReactChildren} from "react";
 import {
     useListController,
     ReduxState,
     Record,
     Identifier,
     usePermissions,
-    RedirectionSideEffect,
-} from 'ra-core';
-import { RouteComponentProps } from 'react-router-dom';
-import { StaticContext } from 'react-router';
-import * as H from 'history';
-import { ClassNameMap } from '@material-ui/core/styles/withStyles';
-import { ListControllerProps } from 'ra-core/esm/controller/useListController';
-import { FormRenderProps } from 'react-final-form';
+    RedirectionSideEffect
+} from "ra-core";
+import {RouteComponentProps} from "react-router-dom";
+import {StaticContext} from "react-router";
+import * as H from "history";
+import {ClassNameMap} from "@material-ui/core/styles/withStyles";
+import {ListControllerProps} from "ra-core/esm/controller/useListController";
+import {FormRenderProps} from "react-final-form";
 
-export type ThemeName = 'light' | 'dark';
+export type ThemeName = "light" | "dark";
 
 export interface AppState extends ReduxState {
     theme: ThemeName;
@@ -54,7 +54,7 @@ export interface Customer extends Record {
     total_spent: number;
 }
 
-export type OrderStatus = 'ordered' | 'delivered' | 'cancelled';
+export type OrderStatus = "ordered" | "delivered" | "cancelled";
 
 export interface Order extends Record {
     status: OrderStatus;
@@ -81,15 +81,14 @@ export interface FieldProps<T extends Record = Record> {
     formClassName?: string;
 }
 
-export interface ReferenceFieldProps<T extends Record = Record>
-    extends FieldProps<T> {
+export interface ReferenceFieldProps<T extends Record = Record> extends FieldProps<T> {
     reference: string;
     children: ReactChildren;
     link?: string | false;
     sortBy?: string;
 }
 
-export type ReviewStatus = 'accepted' | 'pending' | 'rejected';
+export type ReviewStatus = "accepted" | "pending" | "rejected";
 
 export interface Review extends Record {
     date: Date;
@@ -103,11 +102,11 @@ export interface ResourceMatch {
     [k: string]: string;
 }
 
-type FilterClassKey = 'button' | 'form';
+type FilterClassKey = "button" | "form";
 
 export interface ToolbarProps<T extends Record = Record> {
     handleSubmitWithRedirect?: (redirect: RedirectionSideEffect) => void;
-    handleSubmit?: FormRenderProps['handleSubmit'];
+    handleSubmit?: FormRenderProps["handleSubmit"];
     invalid?: boolean;
     pristine?: boolean;
     saving?: boolean;
@@ -119,6 +118,7 @@ export interface ToolbarProps<T extends Record = Record> {
     undoable?: boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export interface BulkActionProps<Params = {}> {
     basePath?: string;
     filterValues?: Params;
@@ -126,14 +126,15 @@ export interface BulkActionProps<Params = {}> {
     selectedIds?: Identifier[];
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export interface FilterProps<Params = {}> {
     classes?: ClassNameMap<FilterClassKey>;
-    context?: 'form' | 'button';
-    displayedFilters?: { [K in keyof Params]?: boolean };
+    context?: "form" | "button";
+    displayedFilters?: {[K in keyof Params]?: boolean};
     filterValues?: Params;
-    hideFilter?: ReturnType<typeof useListController>['hideFilter'];
-    setFilters?: ReturnType<typeof useListController>['setFilters'];
-    showFilter?: ReturnType<typeof useListController>['showFilter'];
+    hideFilter?: ReturnType<typeof useListController>["hideFilter"];
+    setFilters?: ReturnType<typeof useListController>["setFilters"];
+    showFilter?: ReturnType<typeof useListController>["showFilter"];
     resource?: string;
 }
 
@@ -142,24 +143,26 @@ export interface FilterProps<Params = {}> {
 // }
 
 export interface ResourceComponentProps<
-    Params extends { [K in keyof Params]?: string } = {},
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    Params extends {[K in keyof Params]?: string} = {},
     C extends StaticContext = StaticContext,
     S = H.LocationState
 > extends RouteComponentProps<Params, C, S> {
     resource: string;
+    // eslint-disable-next-line @typescript-eslint/ban-types
     options: object;
     hasList: boolean;
     hasEdit: boolean;
     hasShow: boolean;
     hasCreate: boolean;
-    permissions: ReturnType<typeof usePermissions>['permissions'];
+    permissions: ReturnType<typeof usePermissions>["permissions"];
 }
 
-export interface ListComponentProps<Params = {}>
-    extends ResourceComponentProps<Params> {}
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type ListComponentProps<Params = {}> = ResourceComponentProps<Params>;
 
 export interface EditComponentProps<
-    Params extends ResourceMatch = { id: string },
+    Params extends ResourceMatch = {id: string},
     C extends StaticContext = StaticContext,
     S = H.LocationState
 > extends ResourceComponentProps<Params, C, S> {
@@ -167,7 +170,7 @@ export interface EditComponentProps<
 }
 
 export interface ShowComponentProps<
-    Params extends ResourceMatch = { id: string },
+    Params extends ResourceMatch = {id: string},
     C extends StaticContext = StaticContext,
     S = H.LocationState
 > extends ResourceComponentProps<Params, C, S> {
@@ -175,7 +178,7 @@ export interface ShowComponentProps<
 }
 
 export interface CreateComponentProps<
-    Params extends ResourceMatch = { id: string },
+    Params extends ResourceMatch = {id: string},
     C extends StaticContext = StaticContext,
     S = H.LocationState
 > extends ResourceComponentProps<Params, C, S> {

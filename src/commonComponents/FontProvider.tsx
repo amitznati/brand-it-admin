@@ -6,11 +6,11 @@ const FontProvider = ({children, fontFamilies}) => {
     const theme = createMuiTheme({
         overrides: {
             MuiCssBaseline: {
-                '@global': {
-                    '@font-face': fontFamilies,
-                },
-            },
-        },
+                "@global": {
+                    "@font-face": fontFamilies
+                }
+            }
+        }
     });
     return (
         <ThemeProvider theme={theme}>

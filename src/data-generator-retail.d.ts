@@ -1,1 +1,1 @@
-declare module 'data-generator-retail';
+declare module "data-generator-retail";

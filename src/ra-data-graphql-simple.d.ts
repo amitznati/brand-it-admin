@@ -1,1 +1,1 @@
-declare module 'ra-data-graphql-simple';
+declare module "ra-data-graphql-simple";

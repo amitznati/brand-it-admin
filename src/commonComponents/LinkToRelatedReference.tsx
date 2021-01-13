@@ -1,19 +1,19 @@
-import * as React from 'react';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
-import { stringify } from 'query-string';
+import * as React from "react";
+import Button from "@material-ui/core/Button";
+import {makeStyles} from "@material-ui/core/styles";
+import {Link} from "react-router-dom";
+import {stringify} from "query-string";
 
 const useStyles = makeStyles({
-    icon: { paddingRight: '0.5em' },
+    icon: {paddingRight: "0.5em"},
     link: {
-        display: 'inline-flex',
-        alignItems: 'center',
-    },
+        display: "inline-flex",
+        alignItems: "center"
+    }
 });
 
 const LinkToRelatedReference = (props) => {
-    const { record, pathname, filterFunc, icon: Icon, label } = props;
+    const {record, pathname, filterFunc, icon: Icon, label} = props;
     const classes = useStyles();
     return record ? (
         <Button
@@ -23,8 +23,8 @@ const LinkToRelatedReference = (props) => {
             to={{
                 pathname,
                 search: stringify({
-                    filter: JSON.stringify(filterFunc(record)),
-                }),
+                    filter: JSON.stringify(filterFunc(record))
+                })
             }}
             className={classes.link}
         >
