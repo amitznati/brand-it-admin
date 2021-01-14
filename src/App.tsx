@@ -48,19 +48,16 @@ const App = () => {
     const [dataProvider, setDataProvider] = React.useState(null);
 
     React.useEffect(() => {
-        let restoreFetch;
-
-        const fetchDataProvider = async () => {
-            const dataProviderInstance = await dataProviderFactory("graphql");
-            setDataProvider(
-                // GOTCHA: dataProviderInstance can be a function
-                () => dataProviderInstance
-            );
+        const fetchDataProvider = () => {
+            dataProviderFactory("graphql").then(dataProviderInstance => {
+                setDataProvider(
+                    // GOTCHA: dataProviderInstance can be a function
+                    () => dataProviderInstance
+                );
+            });
         };
 
         fetchDataProvider();
-
-        return restoreFetch;
     }, []);
 
     if (!dataProvider) {
