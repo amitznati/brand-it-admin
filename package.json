@@ -16,10 +16,12 @@
     ],
     "dependencies": {
         "@apollo/client": "^3.2.0",
+        "@aws-amplify/ui-react": "^0.2.34",
         "@material-ui/core": "^4.10.0",
         "@material-ui/icons": "^4.9.1",
         "@material-ui/lab": "^4.0.0-alpha.56",
         "apollo-upload-client": "^14.1.2",
+        "aws-amplify": "^3.3.14",
         "graphql": "^15.3.0",
         "proxy-polyfill": "^0.3.0",
         "ra-data-graphql-simple": "^3.0.0",

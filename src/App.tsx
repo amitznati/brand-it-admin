@@ -1,12 +1,15 @@
 import * as React from "react";
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import Amplify from 'aws-amplify';
+import awsConfig from './aws-exports';
 import {Admin, Resource} from "react-admin";
 import polyglotI18nProvider from "ra-i18n-polyglot";
 import {createMuiTheme, ThemeProvider} from "@material-ui/core/styles";
 import "./App.css";
 
-import authProvider from "./authProvider";
+// import authProvider from "./authProvider";
 import themeReducer from "./themeReducer";
-import {Login, Layout} from "./layout";
+import {Layout} from "./layout";
 import customRoutes from "./routes";
 import englishMessages from "./i18n/en";
 
@@ -19,8 +22,12 @@ import theme from "./theme";
 import logo from "./logo";
 import font from "./font";
 import uploadedImage from "./uploadedImage";
-
 import "./utils";
+
+
+Amplify.configure(awsConfig);
+
+
 
 const myTheme = createMuiTheme({
     overrides: {
@@ -71,9 +78,9 @@ const App = () => {
                 dataProvider={dataProvider}
                 customReducers={{theme: themeReducer}}
                 customRoutes={customRoutes}
-                authProvider={authProvider}
+                // authProvider={authProvider}
                 dashboard={() => <div>Dashboard</div>}
-                loginPage={Login}
+                // loginPage={Login}
                 layout={Layout}
                 i18nProvider={i18nProvider}
             >
@@ -89,4 +96,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default withAuthenticator(App);
